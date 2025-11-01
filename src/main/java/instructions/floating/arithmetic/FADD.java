@@ -22,6 +22,6 @@ public class FADD extends Instruction<OperandsRRR> {
 
         cpu.statusReg.setFlagStatus(Flag.SIGN, result < 0);
 
-        cpu.intRegs.get(operands.firstRegister).setValueAsFloat(result);
+        cpu.floatRegs.get(operands.firstRegister).setValueAsFloat(result);
     }
 }
