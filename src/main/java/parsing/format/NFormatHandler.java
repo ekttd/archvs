@@ -27,7 +27,7 @@ public class NFormatHandler extends FormatHandler {
         } else if (successor != null) {
             instructionData = successor.handleRequest(request);
         } else {
-            throw new IncorrectFormatException("Incorrect format of instruction");
+            throw new IncorrectFormatException("Неверный формат");
         }
         return instructionData;
     }
