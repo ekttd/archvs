@@ -1,4 +1,4 @@
-package instructions.arithmetic;
+package instructions.integer.arithmetic;
 
 import cpu.CPU;
 import cpu.Flag;
@@ -6,9 +6,9 @@ import cpu.interrupts.exceptions.InterruptException;
 import instructions.Instruction;
 import operands.OperandsRRR;
 
-public class ADD extends Instruction<OperandsRRR> {
-    public ADD() {
-        super(1, "add");
+public class MULH extends Instruction<OperandsRRR> {
+    public MULH() {
+        super(11, "mulh");
     }
 
     @Override
@@ -16,13 +16,9 @@ public class ADD extends Instruction<OperandsRRR> {
         int fstValue = cpu.intRegs.get(operands.secondRegister).getValue();
         int secValue = cpu.intRegs.get(operands.thirdRegister).getValue();
 
-        int result = fstValue + secValue;
+        int result = (int)(((long)fstValue * secValue) >> 32);
 
         cpu.statusReg.setFlagStatus(Flag.ZERO, result == 0);
-
-        cpu.statusReg.setFlagStatus(Flag.OVERFLOW, ((fstValue & secValue & ~result) | (~fstValue & ~secValue & result)) < 0);
-
-        cpu.statusReg.setFlagStatus(Flag.CARRY, (fstValue ^ Integer.MIN_VALUE) < (secValue ^ Integer.MIN_VALUE));
 
         cpu.statusReg.setFlagStatus(Flag.SIGN, result < 0);
 
