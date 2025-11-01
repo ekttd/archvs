@@ -49,7 +49,6 @@ public abstract class Instruction<T extends Operands> {
         return VALUES;
     }
 
-    // TODO: program end exception, unknown instruction exception
     public static Instruction fromOpcode(int opcode) {
         if (OPCODES == null) {
             try {

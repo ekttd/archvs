@@ -60,7 +60,6 @@ public class EmulatorController {
         trapToggleButton.setSelected(cpu.statusReg.getFlagStatus(Flag.TRAP));
         supervisorToggleButton.setSelected(cpu.statusReg.getFlagStatus(Flag.SUPERVISOR));
 
-        // TODO: проверку на количество инчтрукций
         loadIntoMemoryButton.setOnAction(actionEvent -> {
             String[] instructions = codeTextArea.getText().split("\n");
 
